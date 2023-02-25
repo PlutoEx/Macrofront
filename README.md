@@ -4,7 +4,7 @@
 ```
 npm init -y
 npm i @ijl/cli -D
-npx ijl-cli --init
+npx ijl-cli init
 ```
 ## To run
 
