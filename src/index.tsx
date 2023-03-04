@@ -1,20 +1,15 @@
-import React from 'react';
-import ReactDom from 'react-dom';
+import React from "react";
+import ReactDom from "react-dom";
 
-import App from './app';
+import App from "./app";
 
-export default  `
-    <div>
-       <h1>Hello world</h1>
-    </div>
-`;
-const container = document.getElementById('app');
-export const mount = (component: string) => {
-    
-    container.innerHTML = component;
+export default () => <App />;
+
+const container = document.getElementById("app");
+export const mount = (Component) => {
+  ReactDom.render(<Component />, document.getElementById("app"));
 };
 
 export const unmount = () => {
-    container.innerHTML = '';
+  ReactDom.unmountComponentAtNode(document.getElementById("app"));
 };
-
