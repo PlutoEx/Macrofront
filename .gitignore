@@ -1,3 +1,6 @@
-node_modules
 .DS_Store
 .npm
+tsconfig.json
+webpack.config.js
+index.d.ts
+node_modules

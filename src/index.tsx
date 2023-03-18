@@ -6,10 +6,11 @@ import App from "./app";
 export default () => <App />;
 
 const container = document.getElementById("app");
+
 export const mount = (Component) => {
-  ReactDom.render(<Component />, document.getElementById("app"));
+  ReactDom.render(<Component />, container);
 };
 
 export const unmount = () => {
-  ReactDom.unmountComponentAtNode(document.getElementById("app"));
+  ReactDom.unmountComponentAtNode(container);
 };

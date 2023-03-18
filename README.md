@@ -11,3 +11,9 @@ npx ijl-cli init
 ```
 npm start
 ```
+
+## To run storybook
+
+```
+npm run storybook
+```
