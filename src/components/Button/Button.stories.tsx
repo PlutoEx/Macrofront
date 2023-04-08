@@ -1,8 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { Button } from "./index";
 import { ButtonProps } from "./types";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "../theme/theme";
 
 const meta: Meta<ButtonProps> = {
   title: "core/Button",

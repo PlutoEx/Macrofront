@@ -1,12 +1,15 @@
-import React from "react";
-import MainBooks from "./components/Book/Main";
+import React from 'react';
+import MainBooks from './components/Book/Main';
+import { Footer } from './components/Footer';
 
 const App = () => {
-    return (
-        <>
+      return (
+            <>
+            
             <MainBooks/>
+            <Footer />
         </>
-    );
+      );
 };
 
 export default App;

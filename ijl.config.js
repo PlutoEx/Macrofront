@@ -1,21 +1,29 @@
-const pkg = require('./package')
+const pkg = require('./package');
 
 module.exports = {
   apiPath: 'stubs/api',
   webpackConfig: {
     output: {
-      publicPath: `/static/${pkg.name}/${process.env.VERSION || pkg.version}/`
-    }
+      publicPath: `/static/${pkg.name}/${process.env.VERSION || pkg.version}/`,
+    },
+    module: {
+      rules: [
+        {
+            test: /\.(png|svg|jpg|jpeg|gif)$/,
+            type: 'asset/resource',
+        },
+      ],
+    },
   },
   navigations: {
-    'advfront.main': '/advfront'
+    'advfront.main': '/advfront',
   },
   features: {
-    'advfront': {
+    advfront: {
       // add your features here in the format [featureName]: { value: string }
     },
   },
   config: {
-    key: 'value'
-  }
-}
+    key: 'value',
+  },
+};
