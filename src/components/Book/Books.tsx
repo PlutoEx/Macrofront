@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
 /** @jsx jsx */
 import {jsx, css} from "@emotion/react";
-import {BookCardImgStyled, BookCardStyled, BookInfoStyled, BooksGridStyled, TextStyle} from "./Book.styles";
+import React, {useState} from 'react';
+import {BookCardImgStyled, BookCardStyled, BookInfoStyled, BooksGridStyled, TextStyleS} from "./Book.styles";
 import Book from "./Book";
-import Modal from "react-modal";
 
 export interface BookData {
     key: string;
@@ -20,35 +19,39 @@ interface BooksProps {
 }
 
 const Books: React.FC<BooksProps> = ({books}) => {
-    const [selectedBook, setSelectedBook] = useState<string[] | null>();
+    const [selectedBook, setSelectedBook] = useState<string[] | null>(null);
     const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+    const [bookCoverId, setBookCoverId] = useState<number | null>(null);
 
-    const handleBookClick = (bookKey: string[]) => {
+    const handleBookClick = (bookKey: string[], bookCoverId: number) => {
         setSelectedBook(bookKey);
+        setBookCoverId(bookCoverId)
         setIsOpen(true);
     };
 
     const handleClose = () => {
         setSelectedBook(null);
+        setBookCoverId(null);
         setIsOpen(false);
     };
 
     return (
         <BooksGridStyled>
             {books.map((book) => (
-                <BookCardStyled onClick={() => handleBookClick([book.key, book.isbn[0]])}>
+                <BookCardStyled key={book.key} onClick={() => handleBookClick([book.key, book.isbn[0]], book.cover_i)}>
                     <BookCardImgStyled
-                        src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+                        src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
                         alt={`Cover for ${book.title}`}/>
                     <BookInfoStyled>
-                        <strong css={TextStyle} style={{fontSize: '10px'}}>{book.title}</strong>
-                        <p css={TextStyle} style={{fontSize: '10px'}}>{book.author_name}</p>
-                        <p css={TextStyle} style={{fontSize: '10px'}}>Publish year: {book.first_publish_year}</p>
+                        <strong css={TextStyleS}>{book.title}</strong>
+                        <p css={TextStyleS}>{book.author_name}</p>
+                        <p css={TextStyleS}>Publish year: {book.first_publish_year}</p>
                     </BookInfoStyled>
                 </BookCardStyled>
             ))}
-            {selectedBook && <Book
+            {selectedBook && bookCoverId && <Book
                 bookKeys={selectedBook}
+                bookCoverId={bookCoverId}
                 isOpen={modalIsOpen}
                 handleClose={handleClose}
             />

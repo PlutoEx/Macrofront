@@ -1,11 +1,11 @@
+/** @jsx jsx */
+import {jsx, css} from "@emotion/react";
 import React, {useState} from 'react';
 import {InputStyled, InputWrapperStyled, SearchIconStyle} from "./Input.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-/** @jsx jsx */
-import {jsx, css} from "@emotion/react";
 
-type InputProps = {
+interface InputProps {
     type: string;
     placeholder: string;
     onChange: (value: string) => void;
