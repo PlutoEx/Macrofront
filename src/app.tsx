@@ -1,13 +1,12 @@
 import React from "react";
-import { Button } from "./components/Button";
+import MainBooks from "./components/Book/Main";
 
 const App = () => {
-  return (
-    <>
-      <h1>Hello world для проекта - advfront</h1>
-      <Button>Click me</Button>
-    </>
-  );
+    return (
+        <>
+            <MainBooks/>
+        </>
+    );
 };
 
 export default App;
