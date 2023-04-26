@@ -17,7 +17,7 @@ export const mainData = [
   },
 ];
 
-export const copyright = `© ${new Date().getFullYear()}, Films 18+`;
+export const copyright = `${new Date().getFullYear()}, Films 18+`;
 
 export const categories = ['Films', 'Books', 'Music'];
 

@@ -1,19 +1,32 @@
 import React from 'react';
-import { FooterStyled, Container, DataRow, FooterRow, DataColumn, Item, Categories } from './Footer.styles';
-
-import { FooterProps } from './types';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
+import {
+  FooterStyled,
+  Container,
+  DataRow,
+  FooterRow,
+  DataColumn,
+  Item,
+  Categories,
+  TextWithImage,
+  imageCSS,
+} from './Footer.styles';
 
 import { mainData, copyright, categories, developedBy } from './constants/text';
 
-export const Footer: React.FC<FooterProps> = ({ className }) => {
+import Image from '../Image';
+const logoSrc = 'https://i.ibb.co/BsBfQYt/logo.png';
+
+const Footer: React.FC = () => {
   return (
-    <Container className={className}>
+    <Container>
       <FooterStyled>
         <DataRow>
           {mainData.map((dataCol, i) => {
             return (
               <DataColumn key={i}>
-                <span key={i}>{dataCol.title}</span>
+                <span>{dataCol.title}</span>
                 {dataCol.items.map((item, j) => {
                   return <Item key={`${i}_${j}`}>{item}</Item>;
                 })}
@@ -22,15 +35,20 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           })}
         </DataRow>
         <FooterRow>
-          <span>{copyright}</span>
+          <span>&copy;{copyright}</span>
           <Categories>
-            {categories.map((category) => {
-              return <span>{category}</span>;
+            {categories.map((category, i) => {
+              return <span key={i}>{category}</span>;
             })}
           </Categories>
-          <span>{developedBy}</span>
+          <TextWithImage>
+            <span>{developedBy}</span>
+            <Image src={logoSrc} alt="MacroFrontEnd logo" width={40} height={33} css={imageCSS} />
+          </TextWithImage>
         </FooterRow>
       </FooterStyled>
     </Container>
   );
 };
+
+export default Footer;

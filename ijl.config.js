@@ -6,14 +6,6 @@ module.exports = {
     output: {
       publicPath: `/static/${pkg.name}/${process.env.VERSION || pkg.version}/`,
     },
-    module: {
-      rules: [
-        {
-            test: /\.(png|svg|jpg|jpeg|gif)$/,
-            type: 'asset/resource',
-        },
-      ],
-    },
   },
   navigations: {
     'advfront.main': '/advfront',

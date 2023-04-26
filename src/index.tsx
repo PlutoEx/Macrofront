@@ -8,9 +8,9 @@ export default () => <App />;
 const container = document.getElementById('app');
 
 export const mount = (Component) => {
-    ReactDom.render(<Component />, container);
+  ReactDom.render(<Component />, container);
 };
 
 export const unmount = () => {
-    ReactDom.unmountComponentAtNode(container);
+  container && ReactDom.unmountComponentAtNode(container);
 };
