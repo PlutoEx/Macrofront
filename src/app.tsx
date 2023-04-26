@@ -1,10 +1,10 @@
 import React from "react";
-import BooksSearch from "./components/Book/BooksSearch";
+import MainBooks from "./components/Book/Main";
 
 const App = () => {
     return (
         <>
-            <BooksSearch></BooksSearch>
+            <MainBooks/>
         </>
     );
 };

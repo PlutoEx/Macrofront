@@ -1,4 +1,4 @@
-import {css} from "@emotion/react";
+import {css, SerializedStyles} from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const InputWrapperStyled = styled.div`
@@ -18,7 +18,7 @@ export const InputWrapperStyled = styled.div`
   padding-left: 35px;
 `;
 
-export const SearchIconStyle = css`
+export const SearchIconStyle: SerializedStyles = css`
   position: absolute;
   top: 50%;
   left: 10px;
@@ -27,4 +27,5 @@ export const SearchIconStyle = css`
 
 export const InputStyled = styled.input`
   all: unset;
+  width: 100%;
 `;

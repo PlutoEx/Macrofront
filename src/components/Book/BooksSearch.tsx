@@ -1,11 +1,13 @@
 /** @jsx jsx */
-import {jsx, css} from "@emotion/react";
+import {jsx} from "@emotion/react";
 import React, {useState} from 'react';
 import axios from "axios";
-import {ContainerStyled, TextStyle} from "./Book.styles";
-import SelectMenu, {Option} from "../SelectMenu/selectMenu";
+import {ContainerStyled, SearchStyle, TextStyle} from "./Book.styles";
+import SelectMenu from "../SelectMenu/selectMenu";
 import Input from "../Input";
-import Books, {BookData} from "./Books";
+import Books from "./Books";
+import {BookData, SortsOption} from "./types";
+import {Option} from "../SelectMenu/types";
 
 const options: Option[] = [
     {value: "any", label: "Any"},
@@ -14,7 +16,6 @@ const options: Option[] = [
     {value: "old", label: "Old"},
 ];
 const MaxBooksSize: number = 20;
-type SortsOption = "any" | "title" | "new" | "old";
 
 const BooksSearch: React.FC = () => {
     const [inputValue, setInputValue] = useState<string>('');
@@ -36,29 +37,26 @@ const BooksSearch: React.FC = () => {
                     book.isbn
             ).slice(0, MaxBooksSize);
             setBooks(booksResults);
-            // setBooks(response.data.docs);  // without filter
+            // setBooks(response.data.docs).slice(0, MaxBookSize);  // without filter
         } catch (error) {
-            console.log(error);
+            console.error("My error: " + error);
         }
     };
 
-    const handleInputChange = (event: string) => {
-        const newValue = event.toString().toLowerCase();
+    const handleInputChange = (event: string): void => {
+        const newValue: string = event.toString().toLowerCase();
         setInputValue(newValue);
     };
 
-    const handleSortChange = (event: Option) => {
-        const selectedOption = event.value as SortsOption;
+    const handleSortChange = (event: Option): void => {
+        const selectedOption: SortsOption = event.value as SortsOption;
         setSortOption(selectedOption);
     };
 
     return (
         <ContainerStyled>
-            <form onSubmit={handleSearch} style={{display: 'inline-block'}}>
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center'
-                }}>
+            <form onSubmit={handleSearch} id="search-form">
+                <div css={SearchStyle}>
                     <div>
                         <div css={TextStyle}>Search</div>
                         <Input

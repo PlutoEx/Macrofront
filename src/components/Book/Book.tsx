@@ -1,49 +1,22 @@
 /** @jsx jsx */
-import {jsx, css} from "@emotion/react";
+import {jsx} from "@emotion/react";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Modal from "react-modal";
 import {CardStyle, ExitButtonStyle, ImgStyle, ModalStyles} from "./Book.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
-
-interface BookProps {
-    bookKeys: string[];
-    bookCoverId: number;
-    isOpen: boolean;
-    handleClose: () => void;
-}
-
-interface BookInfo {
-    title: string;
-    authors: string[] | null;
-    coverUrl: string | null;
-    urlLink: string | null;
-    description: string | null;
-    firstPublishedYear: string;
-    publishers: string[] | null;
-    languages: string[] | null;
-    weight: string | null;
-    sub_title: string | null;
-    full_title: string | null;
-    pages: string | null;
-    created: string | null;
-    last_modified: string | null;
-}
+import {BookInfo, BookProps, CustomType} from "./types";
 
 async function getBookData(bookKeys: string[]) {
-    // That have low details, but almost always have cover_id
-    const response1 = await axios.get(`http://openlibrary.org/works/${bookKeys[0]}.json`);
-    // More details
+    // That have low details
+    // const response1 = await axios.get(`http://openlibrary.org/works/${bookKeys[0]}.json`);
+    // const bookData1 = response1.data;
+    const bookData1: null = null;
+    // That api have more details about book
     const response2 = await axios.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${bookKeys[1]}&jscmd=details&format=json`);
-    const bookData1 = response1.data;
     const bookData2 = response2.data[`ISBN:${bookKeys[1]}`];
     return [bookData1, bookData2];
-}
-
-type CustomType = {
-    name: string;
-    key: string;
 }
 
 const Book: React.FC<BookProps> = ({bookKeys, bookCoverId, isOpen, handleClose}) => {
@@ -65,17 +38,12 @@ const Book: React.FC<BookProps> = ({bookKeys, bookCoverId, isOpen, handleClose})
         weight: null,
     });
 
-    useEffect(() => {
-        const fetchBookInfo = async () => {
+    useEffect((): void => {
+        const fetchBookInfo = async (): Promise<void> => {
             try {
-                // bookData1 can be needed later
-                let [bookData1, bookData2] = await getBookData(bookKeys);
-                // console.log(bookData1);
-                // console.log(bookData2);
+                let [_bookData1, bookData2] = await getBookData(bookKeys);
                 setBookInfo({
                     authors: bookData2.details.authors ? bookData2.details.authors.map((author: CustomType) => author.name) : null,
-                    // coverUrl: bookData2.details.covers ? `https://covers.openlibrary.org/b/id/${bookData2.details.covers[0]}-M.jpg` :
-                        // (bookData1.covers ? `https://covers.openlibrary.org/b/id/${bookData1.covers[0]}-M.jpg`: null),
                     coverUrl: `https://covers.openlibrary.org/b/id/${bookCoverId}-L.jpg`,
                     created: bookData2.details.created ? bookData2.details.created.value : null,
                     description: bookData2.details.description ? bookData2.details.description.value : null,
@@ -91,7 +59,7 @@ const Book: React.FC<BookProps> = ({bookKeys, bookCoverId, isOpen, handleClose})
                     weight: bookData2.details.weight
                 });
             } catch (error) {
-                console.error(error);
+                console.error("My error: " + error);
             }
         };
         fetchBookInfo().then(r => r);

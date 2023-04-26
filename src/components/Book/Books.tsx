@@ -1,22 +1,9 @@
 /** @jsx jsx */
-import {jsx, css} from "@emotion/react";
+import {jsx} from "@emotion/react";
 import React, {useState} from 'react';
 import {BookCardImgStyled, BookCardStyled, BookInfoStyled, BooksGridStyled, TextStyleS} from "./Book.styles";
 import Book from "./Book";
-
-export interface BookData {
-    key: string;
-    title: string;
-    author_name: string[];
-    cover_i: number;
-    first_publish_year: number;
-    publisher?: string[];
-    isbn: string[];
-}
-
-interface BooksProps {
-    books: BookData[];
-}
+import {BookData, BooksProps} from "./types";
 
 const Books: React.FC<BooksProps> = ({books}) => {
     const [selectedBook, setSelectedBook] = useState<string[] | null>(null);
@@ -37,7 +24,7 @@ const Books: React.FC<BooksProps> = ({books}) => {
 
     return (
         <BooksGridStyled>
-            {books.map((book) => (
+            {books.map((book: BookData) => (
                 <BookCardStyled key={book.key} onClick={() => handleBookClick([book.key, book.isbn[0]], book.cover_i)}>
                     <BookCardImgStyled
                         src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}

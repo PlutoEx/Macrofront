@@ -1,25 +1,19 @@
 /** @jsx jsx */
-import {jsx, css} from "@emotion/react";
+import {jsx} from "@emotion/react";
 import React, {useState} from 'react';
 import {InputStyled, InputWrapperStyled, SearchIconStyle} from "./Input.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-
-interface InputProps {
-    type: string;
-    placeholder: string;
-    onChange: (value: string) => void;
-};
+import {InputProps} from "./types";
 
 const Input: React.FC<InputProps> = ({type, placeholder, onChange}) => {
     const [inputValue, setInputValue] = useState<string>('');
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = event.target.value;
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const newValue: string = event.target.value;
         setInputValue(newValue);
-        if (onChange) {
+        if (onChange)
             onChange(newValue);
-        }
     };
 
     return (

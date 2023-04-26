@@ -6,16 +6,7 @@ import {
     SelectSelectedStyled,
     SelectStyled
 } from "./SelectMenu.styles"
-
-export interface Option {
-    value: string;
-    label: string;
-}
-
-interface SelectMenuProps {
-    options: Option[];
-    onChange: (value: Option) => void;
-}
+import {Option, SelectMenuProps} from "./types";
 
 const SelectMenu: React.FC<SelectMenuProps> = ({options, onChange}) => {
     const [isOpen, setIsOpen] = useState(false);

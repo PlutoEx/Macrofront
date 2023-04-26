@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import {theme} from '../theme/theme';
-import {css, keyframes} from "@emotion/react";
+import {css} from "@emotion/react";
+import {IconStyledProps, SelectOptionStyledProps} from "./types";
 
 export const SelectStyled = styled.div`
   margin-top: 10px;
@@ -27,14 +27,14 @@ export const SelectSelectedStyled = styled.div`
 export const SelectMenuStyled = styled.div`
   border: 1px solid black;
   position: absolute;
-  z-index: 999;
+  z-index: 1;
   margin-top: 10px;
   border-radius: 15px;
   background: white;
   width: 100px;
 `;
 
-export const SelectOptionStyled = styled.div`
+export const SelectOptionStyled = styled.div<SelectOptionStyledProps>`
   border-radius: 15px;
   padding: 10px;
 
@@ -45,16 +45,7 @@ export const SelectOptionStyled = styled.div`
   ${({isSelected}) => isSelected && css`background-color: gray;`}
 `;
 
-const rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-`;
-
-export const IconStyled = styled.span`
+export const IconStyled = styled.span<IconStyledProps>`
   display: flex;
   align-items: center;
   margin-left: auto;
