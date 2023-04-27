@@ -42,29 +42,7 @@ export const BooksGridStyled = styled.div`
   justify-items: center;
   align-content: space-evenly;
   align-items: center;
-`;
-
-export const BookCardStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  height: 300px;
-  width: 150px;
-  overflow: hidden;
-`;
-
-export const BookCardImgStyled = styled.img`
-  height: 190px;
-  min-height: 190px;
-  width: auto;
-  object-fit: cover;
-  object-position: center;
-`;
-
-export const BookInfoStyled = styled.div`
-  padding: 10px;
+  padding-bottom: 20px;
 `;
 
 export const ModalStyles = {
@@ -89,6 +67,10 @@ export const ModalStyles = {
     }
 };
 
+export const unsetButton = css`
+  all: unset;
+`;
+
 export const CardStyle = css`
   display: flex;
   align-items: center;
@@ -104,7 +86,6 @@ export const ImgStyle = css`
 
 export const ExitButtonStyle = css`
   all: unset;
-  background-color: #333;
   position: absolute;
   top: 0;
   right: 5px;
@@ -187,4 +168,8 @@ export const HeaderImgPopupStyle2 = css`
 export const HeaderImgWrapperStyle = css`
   position: relative;
   margin-bottom: 60px;
+`;
+
+export const BookLinkStyle = css`
+  color: #00CEDB;
 `;

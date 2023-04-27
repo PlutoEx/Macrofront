@@ -4,7 +4,7 @@ import {IconStyledProps, SelectOptionStyledProps} from "./types";
 
 export const SelectStyled = styled.div`
   margin-top: 10px;
-  border-radius: 15px;
+  border-radius: 8px;
   color: black;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -17,7 +17,7 @@ export const SelectStyled = styled.div`
 export const SelectSelectedStyled = styled.div`
   padding-left: 15px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 8px;
   width: 85px;
   height: 30px;
   align-items: center;
@@ -29,13 +29,13 @@ export const SelectMenuStyled = styled.div`
   position: absolute;
   z-index: 1;
   margin-top: 10px;
-  border-radius: 15px;
+  border-radius: 8px;
   background: white;
   width: 100px;
 `;
 
 export const SelectOptionStyled = styled.div<SelectOptionStyledProps>`
-  border-radius: 15px;
+  border-radius: 8px;
   padding: 10px;
 
   &:hover {
