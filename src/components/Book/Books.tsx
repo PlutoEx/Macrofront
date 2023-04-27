@@ -1,7 +1,12 @@
 /** @jsx jsx */
 import {jsx} from "@emotion/react";
 import React, {useState} from 'react';
-import {BookCardImgStyled, BookCardStyled, BookInfoStyled, BooksGridStyled, TextStyleS} from "./Book.styles";
+import {
+    BookCardImgStyled,
+    BookCardStyled,
+    BookInfoStyle1, BookInfoStyle2,
+    BooksGridStyled,
+} from "./Book.styles";
 import Book from "./Book";
 import {BookData, BooksProps} from "./types";
 
@@ -29,11 +34,11 @@ const Books: React.FC<BooksProps> = ({books}) => {
                     <BookCardImgStyled
                         src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
                         alt={`Cover for ${book.title}`}/>
-                    <BookInfoStyled>
-                        <strong css={TextStyleS}>{book.title}</strong>
-                        <p css={TextStyleS}>{book.author_name}</p>
-                        <p css={TextStyleS}>Publish year: {book.first_publish_year}</p>
-                    </BookInfoStyled>
+                    <div>
+                        <strong css={BookInfoStyle1}>{book.title}</strong>
+                        <p css={BookInfoStyle2}>{book.author_name}</p>
+                        <p css={BookInfoStyle2}>Publish year: {book.first_publish_year}</p>
+                    </div>
                 </BookCardStyled>
             ))}
             {selectedBook && bookCoverId && <Book

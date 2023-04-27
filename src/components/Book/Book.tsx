@@ -3,7 +3,7 @@ import {jsx} from "@emotion/react";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import {CardStyle, ExitButtonStyle, ImgStyle, ModalStyles} from "./Book.styles";
+import {BookLinkStyle, CardStyle, ExitButtonStyle, ImgStyle, ModalStyles} from "./Book.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {BookInfo, BookProps, CustomType} from "./types";
@@ -107,7 +107,7 @@ const Book: React.FC<BookProps> = ({bookKeys, bookCoverId, isOpen, handleClose})
                     )}
                     {bookInfo.description && <p>{bookInfo["description"]}</p>}
                     {bookInfo.urlLink && (
-                        <a href={bookInfo["urlLink"]} target="_blank" rel="noopener noreferrer">
+                        <a css={BookLinkStyle} href={bookInfo["urlLink"]} target="_blank" rel="noopener noreferrer">
                             More Info
                         </a>
                     )}

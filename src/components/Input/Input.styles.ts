@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const InputWrapperStyled = styled.div`
   position: relative;
-  border-radius: 15px;
+  border-radius: 8px;
   background: white;
   color: black;
   font-family: Roboto, sans-serif;
