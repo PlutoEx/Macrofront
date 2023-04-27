@@ -17,3 +17,15 @@ npm start
 ```
 npm run storybook
 ```
+
+## To run tests 
+
+```
+npm test
+```
+
+### Test specific file
+
+```
+npm test -- src/someFile.test.ts
+```

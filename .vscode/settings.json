@@ -1,0 +1,9 @@
+{
+  "prettier.configPath": ".prettierrc.js",
+  "prettier.documentSelectors": [".prettierrc.js"],
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true,
+  "editor.tabSize": 2
+}
