@@ -45,38 +45,6 @@ export const BooksGridStyled = styled.div`
   padding-bottom: 20px;
 `;
 
-export const BookCardStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 270px;
-  width: 150px;
-  overflow: hidden;
-`;
-
-export const BookCardImgStyled = styled.img`
-  height: 190px;
-  min-height: 190px;
-  width: auto;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px
-`;
-
-export const BookInfoStyle1 = css`
-  font-family: "Russo One", sans-serif;
-  font-weight: 400;
-  font-size: 0.8vw;
-  margin-bottom: 2px;
-`;
-
-export const BookInfoStyle2 = css`
-  font-family: "Russo One", sans-serif;
-  font-size: 0.7vw;
-  color: #BDBDBD;
-  margin-top: 0;
-  margin-bottom: 2px;
-`;
-
 export const ModalStyles = {
     overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.75)',
@@ -98,6 +66,10 @@ export const ModalStyles = {
 
     }
 };
+
+export const unsetButton = css`
+  all: unset;
+`;
 
 export const CardStyle = css`
   display: flex;
