@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import "@fontsource/russo-one";
+import styled from '@emotion/styled';
+import '@fontsource/russo-one';
 
 export const CardStyled = styled.div`
   display: flex;
@@ -15,20 +15,24 @@ export const CardImgStyled = styled.img`
   width: auto;
   object-fit: cover;
   object-position: center;
-  border-radius: 4px
+  border-radius: 4px;
 `;
 
 export const CardTitleStyle = styled.div`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-weight: 400;
   font-size: 0.8vw;
   margin-bottom: 2px;
 `;
 
 export const CardSubtitleStyle = styled.div`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 0.7vw;
-  color: #BDBDBD;
+  color: #bdbdbd;
   margin-top: 0;
   margin-bottom: 2px;
+`;
+
+export const CardContentStyle = styled.div`
+  margin-top: 4px;
 `;
