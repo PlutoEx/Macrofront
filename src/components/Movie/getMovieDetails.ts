@@ -19,7 +19,6 @@ export async function getMovieDetails(title_key: string): Promise<MovieDetails> 
     try {
         options.params.tconst = title_key;
         const response = await axios.request(options);
-        console.log(response.data);
         const data: MovieDetails = {
             id: title_key,
             title: response.data.title.title,

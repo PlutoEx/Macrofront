@@ -3,12 +3,15 @@ import Modal from "react-modal";
 import {CardStyle, ExitButtonStyled, ImgStyled, ModalStyles, ModalTitle, TextContainer} from "./Moive.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
-import {MovieDetails, MovieProps} from "./types";
+import {MovieDataFull, MovieProps} from "./types";
 import {getDetails} from "./getDetails";
 
 
 const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}) => {
-    const [movie, setMovie] = useState<MovieDetails>({
+    const [movie, setMovie] = useState<MovieDataFull>({
+        cast: [],
+        director: [],
+        producer: [],
         genres: [],
         image_url: "",
         minutes: 0,
@@ -24,7 +27,7 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}
     useEffect(() => {
         const fetchMovie = async () => {
             try {
-                const data: MovieDetails = await getDetails(movie_key);
+                const data: MovieDataFull = await getDetails(movie_key);
                 setMovie(data);
             } catch (error) {
                 console.error(error);
@@ -60,6 +63,10 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}
                     {movie.outline && (
                         <p>Outline: {movie.outline}</p>
                     )}
+                    <p>Released: {movie.release}</p>
+                    <p>Cast: {movie.cast.join(', ')}</p>
+                    <p>Director: {movie.director.join(', ')}</p>
+                    <p>Producer: {movie.producer.join(', ')}</p>
                     {movie.rating && (
                         <p>Rating: {movie.rating}</p>
                     )}
@@ -67,7 +74,6 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}
                         <p>Rating count: {movie.rating_count}</p>
                     )}
                     <p>Genres: {movie.genres.join(', ')}</p>
-                    <p>Released: {movie.release}</p>
                     <p>Minutes: {movie.minutes}</p>
                     {movie.episodes && (
                         <p>Episodes: {movie.episodes}</p>

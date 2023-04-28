@@ -10,7 +10,6 @@ export const ContainerStyled = styled.div`
   color: white;
 `;
 
-
 export const TextStyle = css`
   font-family: "Russo One", sans-serif;
   font-style: normal;
@@ -31,21 +30,9 @@ export const SelectTextStyled = styled.div`
   margin-right: 10px;
 `;
 
-export const TopMoviesGridStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-gap: 10px;
-  margin-top: 30px;
-  justify-content: space-evenly;
-  justify-items: center;
-  align-content: space-evenly;
-  align-items: center;
-  padding-bottom: 20px;
-`;
-
 export const MoviesGridStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 10px;
   margin-top: 30px;
   justify-content: space-evenly;
@@ -107,7 +94,7 @@ export const ImgStyled = styled.img`
 
 export const TextContainer = styled.div`
   font-family: "Russo One", sans-serif;
-  font-size: 1vw;
+  font-size: 0.9vw;
   overflow: auto;
 `;
 
