@@ -15,7 +15,8 @@ export const CardImgStyled = styled.img`
   width: auto;
   object-fit: cover;
   object-position: center;
-  border-radius: 4px
+  border-radius: 4px;
+  margin-bottom: 4px;
 `;
 
 export const CardTitleStyle = styled.div`

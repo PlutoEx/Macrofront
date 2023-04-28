@@ -23,7 +23,7 @@ export async function getMovieDetails(title_key: string): Promise<MovieDetails> 
             id: title_key,
             title: response.data.title.title,
             type: response.data.title.titleType,
-            image_url: response.data.title.image ? response.data.title.image.url : response.data.title.parentTitle.image.url,
+            image_url: response.data.title.image ? response.data.title.image.url : (response.data.title.parentTitle ? response.data.title.parentTitle.image.url : ''),
             year: response.data.title.year,
             minutes: response.data.title.runningTimeInMinutes,
             genres: response.data.genres,

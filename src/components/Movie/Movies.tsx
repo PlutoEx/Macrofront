@@ -14,7 +14,7 @@ const Movies: React.FC<MoviesProps> = ({movies, moviesFull}) => {
     const handleMovieClick = (movieKey: string) => {
         setSelectedMovie(movieKey);
         if (moviesFull)
-            setMovieFull(moviesFull[moviesFull.findIndex(movie => movie.id === selectedMovie)])
+            setMovieFull(moviesFull[moviesFull.findIndex(movie => movie.id === movieKey)])
         setIsOpen(true);
     };
 
@@ -36,7 +36,7 @@ const Movies: React.FC<MoviesProps> = ({movies, moviesFull}) => {
                     />
                 </UnsetButtonStyled>
             ))}
-            {selectedMovie && moviesFull?.find(movie => movie.id === selectedMovie) && <Movie
+            {selectedMovie && modalIsOpen && <Movie
                 movie_key={selectedMovie}
                 isOpen={modalIsOpen}
                 handleClose={handleClose}

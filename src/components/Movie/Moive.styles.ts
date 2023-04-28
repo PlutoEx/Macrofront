@@ -14,9 +14,11 @@ export const LeftSideStyled = styled.div`
   flex: 1;
   margin-right: 20px;
   width: 30%;
+  display: inline-block;
 `;
 export const RightSideStyled = styled.div`
-  flex: 1;
+  display: inline-block;
+  width: calc(70% - 20px);
 `;
 
 export const TextSearchStyled = styled.div`
@@ -53,7 +55,7 @@ export const SelectTextStyled = styled.div`
 
 export const MoviesGridStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 10px;
   margin-top: 30px;
   justify-content: space-evenly;

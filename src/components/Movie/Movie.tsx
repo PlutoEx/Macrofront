@@ -22,8 +22,6 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}
         year: 0
     });
 
-    console.log(movieFull)
-
     useEffect(() => {
         const fetchMovie = async () => {
             try {
@@ -34,11 +32,10 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}
             }
         };
 
-        if (movieFull) {
+        if (movieFull)
             setMovie(movieFull);
-        } else {
+        else
             fetchMovie();
-        }
     }, [movie_key, movieFull]);
 
     return (

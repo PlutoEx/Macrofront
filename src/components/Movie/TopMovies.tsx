@@ -6,10 +6,10 @@ import {
 } from "./Moive.styles";
 import SelectMenu from "../SelectMenu/selectMenu";
 import {Option} from "../SelectMenu/types";
-import {genresOptions, top1, top2, top3, top4, top5, top6, top7, top8} from './constant';
+import {genresOptions, top1, top2, top3, top4, top5, top6, top7, top8, top9, top10} from './constant';
 import Movies from "./Movies";
 
-const MaxMovieCount = 8;
+const MaxMovieCount = 10;
 const axios = require('axios');
 const options_all: ApiOptions = {
     method: 'GET',
@@ -51,7 +51,7 @@ const TopMovies = () => {
         }
     }
 
-    const [movies, setMovies] = useState<MovieDataFull[]>([top1, top2, top3, top4, top5, top6, top7, top8]);
+    const [movies, setMovies] = useState<MovieDataFull[]>([top1, top2, top3, top4, top5, top6, top7, top8, top9, top10]);
 
     const fetchMovies = async () => {
         try {

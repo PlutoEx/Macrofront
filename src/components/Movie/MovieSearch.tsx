@@ -48,7 +48,7 @@ const MovieSearch: React.FC = () => {
                 title: movie.title,
                 type: movie.titleType,
                 year: movie.year,
-                image_url: movie.image.url,
+                image_url: movie.image ? movie.image.url : 'no image',
             }));
             setMovies(movieResults);
         } catch (error) {

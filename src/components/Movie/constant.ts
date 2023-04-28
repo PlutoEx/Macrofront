@@ -336,3 +336,84 @@ export const top8 = {
         "Michael Gilio"
     ]
 }
+
+export const top10 = {
+    "id": "tt16419074",
+    "title": "Air",
+    "type": "movie",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYmNlOTNlYjUtM2U3Yy00M2ZjLTkxZDQtN2NiNGZiZDI0ZjE3XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+    "year": 2023,
+    "minutes": 111,
+    "genres": [
+        "Drama",
+        "Sport"
+    ],
+    "release": "2023-04-05",
+    "rating": 7.7,
+    "rating_count": 22149,
+    "summary": "The movie explores how Nike's basketball shoe division was struggling in 1984 due to low sales, and how the company's Marketing VP Rob Strasser and CEO Phil Knight tasked basketball talent scout Sonny Vaccaro to find a new spokesperson for their shoes. Although they considered third draft pick Michael Jordan off limits due to his preference for Adidas and Converse, Vaccaro convinced them that Jordan was a generational talent, and that Nike should pursue him and try to convince Jordan to sign with Nike.",
+    "outline": "Follows the history of shoe salesman Sonny Vaccaro, and how he led Nike in its pursuit of the greatest athlete in the history of basketball, Michael Jordan.",
+    "cast": [
+        "Matt Damon",
+        "Jason Bateman",
+        "Ben Affleck",
+        "Chris Messina",
+        "Viola Davis"
+    ],
+    "director": [
+        "Ben Affleck"
+    ],
+    "producer": [
+        "Ben Affleck",
+        "Madison Ainley",
+        "Jason Michael Berman",
+        "Alex Convery",
+        "Matt Damon"
+    ],
+    "writer": [
+        "Alex Convery"
+    ]
+}
+
+export const top9 = {
+    "id": "tt13375076",
+    "title": "The Pope's Exorcist",
+    "type": "movie",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjA0MGU4MzYtYTYxMy00MjRhLTlmMDYtZTVhZDc1Y2QwNWY2XkEyXkFqcGdeQXVyMjY5ODI4NDk@._V1_.jpg",
+    "year": 2023,
+    "minutes": 103,
+    "genres": [
+        "Horror",
+        "Thriller"
+    ],
+    "release": "2023-04-14",
+    "rating": 6.2,
+    "rating_count": 9300,
+    "summary": "Inspired by the actual files of Father Gabriele Amorth, Chief Exorcist of the Vatican, The Pope's Exorcist follows Amorth as he investigates a young boy's terrifying possession and ends up uncovering a centuries-old conspiracy the Vatican has desperately tried to keep hidden.",
+    "outline": "Follow Gabriele Amorth, the Vatican's leading exorcist, as he investigates the possession of a child and uncovers a conspiracy the Vatican has tried to keep secret.",
+    "cast": [
+        "Russell Crowe",
+        "Daniel Zovatto",
+        "Alex Essoe",
+        "Franco Nero",
+        "Peter DeSouza-Feighoney"
+    ],
+    "director": [
+        "Julius Avery"
+    ],
+    "producer": [
+        "Doug Belgrad",
+        "Sophie Cassidy",
+        "Jo Homewood",
+        "Michael Patrick Kaczmarek",
+        "Jeff Katz"
+    ],
+    "writer": [
+        "Michael Petroni",
+        "Evan Spiliotopoulos",
+        "R. Dean McCreary",
+        "Chester Hastings",
+        "Jeff Katz",
+        "Gabriele Amorth"
+    ]
+}
