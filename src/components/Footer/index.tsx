@@ -16,9 +16,10 @@ import {
 import { mainData, copyright, categories, developedBy } from './constants/text';
 
 import Image from '../Image';
-const logoSrc = 'https://i.ibb.co/BsBfQYt/logo.png';
 
 const Footer: React.FC = () => {
+  const logoSrc = 'https://i.ibb.co/BsBfQYt/logo.png';
+
   return (
     <Container>
       <FooterStyled>
