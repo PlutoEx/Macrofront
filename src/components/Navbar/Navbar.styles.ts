@@ -33,10 +33,3 @@ export const linksWrap = css({
   margin: '28px 45px 28px 125px',
   width: '255px',
 });
-
-export const inputStyles = styled.input`
-  border-radius: 28px;
-
-  width: 350px;
-  height: 32px;
-`;

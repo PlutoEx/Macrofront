@@ -1,7 +1,5 @@
 import React from 'react';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
-import { Container, NavbarStyled, textWithImg, img, linksWrap, inputStyles } from './Navbar.styles';
+import { Container, NavbarStyled, textWithImg, img, linksWrap } from './Navbar.styles';
 
 import Link from '../Link';
 import Image from '../Image';
@@ -28,12 +26,11 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
         </div>
-        {/* Under development */}
         <Input
           type="text"
           placeholder="Search"
           onChange={(event) => console.log(event)}
-          // css={inputStyles}
+          inputbarType="Secondary"
         />
       </div>
     </Container>

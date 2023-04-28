@@ -1,12 +1,10 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react';
 import React, { useState } from 'react';
 import { InputStyled, InputWrapperStyled, SearchIconStyle } from './Input.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { InputProps } from './types';
 
-const Input: React.FC<InputProps> = ({ type, placeholder, onChange }) => {
+const Input: React.FC<InputProps> = ({ type, placeholder, onChange, inputbarType = 'Primary' }) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -16,7 +14,7 @@ const Input: React.FC<InputProps> = ({ type, placeholder, onChange }) => {
   };
 
   return (
-    <InputWrapperStyled>
+    <InputWrapperStyled inputbarType={inputbarType}>
       <FontAwesomeIcon css={SearchIconStyle} icon={faSearch} />
       <InputStyled
         type={type}
