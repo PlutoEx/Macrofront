@@ -1,6 +1,4 @@
 import React from 'react';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
 import {
   FooterStyled,
   Container,
@@ -16,10 +14,9 @@ import {
 import { mainData, copyright, categories, developedBy } from './constants/text';
 
 import Image from '../Image';
+import logo from './../../public/logo.png';
 
 const Footer: React.FC = () => {
-  const logoSrc = 'https://i.ibb.co/BsBfQYt/logo.png';
-
   return (
     <Container>
       <FooterStyled>
@@ -44,7 +41,7 @@ const Footer: React.FC = () => {
           </Categories>
           <TextWithImage>
             <span>{developedBy}</span>
-            <Image src={logoSrc} alt="MacroFrontEnd logo" width={40} height={33} css={imageCSS} />
+            <Image src={logo} alt="MacroFrontEnd logo" width={40} height={33} css={imageCSS} />
           </TextWithImage>
         </FooterRow>
       </FooterStyled>
