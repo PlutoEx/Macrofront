@@ -6,17 +6,17 @@ import Image from '../Image';
 import Input from '../Input';
 
 import capitalizeFirstLetter from '../helpers/capitalizeFirstLetter';
+import logo from './../../public/logo.png';
 
 const Navbar: React.FC = () => {
   const team = 'MACRO FRONT END';
-  const logoSrc = 'https://i.ibb.co/BsBfQYt/logo.png';
   const pages = ['films', 'anime', 'books'];
 
   return (
     <Container>
       <div css={NavbarStyled}>
         <div css={textWithImg}>
-          <Image src={logoSrc} alt="MacroFrontEnd logo" width={65} height={54} css={img} />
+          <Image src={logo} alt="MacroFrontEnd logo" width={65} height={54} css={img} />
           <span>{team}</span>
         </div>
         <div css={linksWrap}>
