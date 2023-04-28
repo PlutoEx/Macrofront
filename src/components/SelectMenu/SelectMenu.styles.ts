@@ -3,7 +3,6 @@ import {css} from "@emotion/react";
 import {IconStyledProps, SelectOptionStyledProps} from "./types";
 
 export const SelectStyled = styled.div`
-  margin-top: 10px;
   border-radius: 8px;
   color: black;
   font-family: 'Roboto', sans-serif;
@@ -32,12 +31,14 @@ export const SelectMenuStyled = styled.div`
   border-radius: 8px;
   background: white;
   width: 100px;
+  max-height: 300px;
+  overflow-y: auto;
 `;
 
 export const SelectOptionStyled = styled.div<SelectOptionStyledProps>`
   border-radius: 8px;
   padding: 10px;
-
+  
   &:hover {
     background-color: lightgray;
   }
@@ -57,4 +58,14 @@ export const IconStyled = styled.span<IconStyledProps>`
           css`
             transform: rotate(180deg);
           `}
+`;
+
+
+export const SelectButtonStyled = styled.button<SelectOptionStyledProps>`
+  all: unset;
+  padding: 4px;
+  border: 1px solid black;
+  border-radius: 8px;
+
+  ${({isSelected}) => isSelected && css`background-color: green;`}
 `;

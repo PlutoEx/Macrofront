@@ -1,5 +1,5 @@
 import React from 'react';
-import MainBooks from './components/Book/Main';
+import MainBooks from './components/Movie/Main';
 import Footer from './components/Footer';
 
 const App = () => {

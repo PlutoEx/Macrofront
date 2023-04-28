@@ -1,88 +1,95 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
-import React, { useState } from "react";
-import axios from "axios";
-import { ContainerStyled, SearchStyle, TextStyle } from "./Moive.styles";
-import SelectMenu from "../SelectMenu/selectMenu";
+import {jsx} from "@emotion/react";
+import React, {useState} from "react";
+import {ContainerStyled, SearchStyle, TextStyle} from "./Moive.styles";
 import Input from "../Input";
 import Movies from "./Movies";
-import { MovieData, SortsOption } from "./types";
-import { Option } from "../SelectMenu/types";
+import {genresOptions} from "./constant";
+import {MovieDataShort} from "./types";
+import SelectSomeMenu from "../SelectMenu/SelectSomeMenu";
 
-const options: Option[] = [
-  { value: "any", label: "Any" },
-  { value: "title", label: "Title" },
-  { value: "new", label: "New" },
-  { value: "old", label: "Old" },
-];
-const MaxMoviesSize: number = 20;
+const MaxMoviesSize: number = 9;
+
+const axios = require('axios');
+
+const options = {
+    method: 'GET',
+    url: 'https://imdb8.p.rapidapi.com/title/v2/find',
+    params: {
+        title: 'game of',
+        limit: MaxMoviesSize.toString(),
+        genre: ''
+    },
+    headers: {
+        'content-type': 'application/octet-stream',
+        'X-RapidAPI-Key': '720535f9edmshf844121d0df7abdp1a3953jsn11d730052c80',
+        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+    }
+};
 
 const MovieSearch: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [movies, setMovies] = useState<MovieData[]>([]);
-  const [sortOption, setSortOption] = useState<SortsOption>("any");
+    const [_inputValue, setInputValue]: [string, React.Dispatch<string>] = useState<string>("");
+    const [movies, setMovies] = useState<MovieDataShort[]>([]);
+    const [genres, setGenres] = useState<string[]>(['all']);
 
-  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=a5a0dd1c13c6d233edac01e3ca400aa7&query=${inputValue}${"any" != sortOption ? `&sort_by=${sortOption}` : ''}&language=en-US&include_adult=false&include_video=false&page=1&region=US`
-      );
-      const movieResults = response.data.results
-        .filter(
-          (movie: any) =>
-            movie.poster_path &&
-            movie.title &&
-            movie.release_date &&
-            movie.overview
-        )
-        .slice(0, MaxMoviesSize)
-        .map((movie: any) => ({
-          title: movie.title,
-          overview: movie.overview,
-          release_date: movie.release_date,
-          poster_path: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        }));
-      setMovies(movieResults);
-    } catch (error) {
-      console.error("My error: " + error);
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const response = await axios.request(options);
+            console.log('Search titleS API:');
+            console.log(response.data);
+            const movieResults: MovieDataShort[] = response.data.results.map((movie: any) => ({
+                id: movie.id.substring(7, movie.id.length - 1),
+                title: movie.title,
+                type: movie.titleType,
+                year: movie.year,
+                image_url: movie.image.url,
+            }));
+            setMovies(movieResults);
+        } catch (error) {
+            console.error("My error: " + error);
+        }
+    };
+
+    const handleInputChange = (event: string): void => {
+        const newValue: string = event.toString().toLowerCase();
+        options.params.title = newValue;
+        setInputValue(newValue);
+    };
+
+    const handleGenresChange = (active: string[]): void => {
+        setGenres(active);
+        if (active[0] == 'all')
+            options.params.genre = ''
+        else
+            options.params.genre = active.join(',');
     }
-  };
 
-  const handleInputChange = (event: string): void => {
-    const newValue: string = event.toString().toLowerCase();
-    setInputValue(newValue);
-  };
-
-  const handleSortChange = (event: Option): void => {
-    const selectedOption: SortsOption = event.value as SortsOption;
-    setSortOption(selectedOption);
-  };
-
-  return (
-    <ContainerStyled>
-      <form onSubmit={handleSearch} id="search-form">
-        <div css={SearchStyle}>
-          <div>
-            <div css={TextStyle}>Search</div>
-            <Input
-              type="text"
-              placeholder={"Enter keyword, title, or release year"}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <div css={TextStyle}>Sort by</div>
-            <SelectMenu
-              options={options}
-              onChange={handleSortChange}
-            />
-          </div>
-        </div>
-      </form>
-      <Movies movies={movies} />
-    </ContainerStyled>
-  );
+    return (
+        <ContainerStyled>
+            <form onSubmit={handleSearch} id="search-form">
+                <div css={SearchStyle}>
+                    <div>
+                        <div css={TextStyle}>Search</div>
+                        <Input
+                            type="text"
+                            placeholder={"Enter title or keyword"}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                </div>
+            </form>
+            <div>
+                <div css={TextStyle}>Genres</div>
+                <SelectSomeMenu
+                    options={genresOptions}
+                    active={genres}
+                    onChange={handleGenresChange}
+                />
+            </div>
+            <Movies movies={movies}/>
+        </ContainerStyled>
+    );
 };
 
 export default MovieSearch;

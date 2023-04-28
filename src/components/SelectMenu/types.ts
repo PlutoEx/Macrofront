@@ -1,10 +1,19 @@
+import {Genres} from "../Movie/types";
+
 export interface SelectMenuProps {
     options: Option[];
     onChange: (value: Option) => void;
 }
 
+export interface SelectSomeMenuProps {
+    options: Option[];
+    active: string[];
+    onChange: (active: string[]) => void;
+}
+
+
 export interface Option {
-    value: string;
+    value: Genres | string;
     label: string;
 }
 

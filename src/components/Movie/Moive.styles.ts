@@ -33,7 +33,20 @@ export const TextStyleS = css`
   font-size: 12px;
 `;
 
-export const BooksGridStyled = styled.div`
+export const TopMoviesWrapperStyled = styled.div`
+  padding-top: 30px;
+  background-color: black;
+  color: white;
+  padding-left: 15%;
+  padding-right: 15%;
+  font-family: "Russo One", sans-serif;
+`;
+
+export const SelectTextStyled = styled.div`
+  margin-right: 10px;
+`;
+
+export const TopMoviesGridStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 10px;
@@ -43,6 +56,27 @@ export const BooksGridStyled = styled.div`
   align-content: space-evenly;
   align-items: center;
   padding-bottom: 20px;
+`;
+
+export const MoviesGridStyled = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+  margin-top: 30px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  padding-bottom: 20px;
+`;
+
+export const UnsetButtonStyled = styled.button`
+  all: unset;
+`;
+
+export const SelectGenreStyled = styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 export const ModalStyles = {
@@ -66,10 +100,6 @@ export const ModalStyles = {
 
     }
 };
-
-export const unsetButton = css`
-  all: unset;
-`;
 
 export const CardStyle = css`
   display: flex;
@@ -172,16 +202,4 @@ export const HeaderImgWrapperStyle = css`
 
 export const MovieLinkStyle = css`
   color: #00CEDB;
-`;
-
-export const MoviesGridStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-gap: 10px;
-  margin-top: 30px;
-  justify-content: space-evenly;
-  justify-items: center;
-  align-content: space-evenly;
-  align-items: center;
-  padding-bottom: 20px;
 `;

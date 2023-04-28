@@ -1,73 +1,83 @@
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import Modal from "react-modal";
-import axios from "axios";
 import {CardStyle, ExitButtonStyle, ImgStyle, ModalStyles} from "./Moive.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import {MovieDetails, MovieProps} from "./types";
+import {getDetails} from "./getDetails";
 
 
-const Movie: React.FC<MovieProps> = ({ movieKeys, moviePosterId, isOpen, handleClose }) => {
-  const [movieInfo, setMovieInfo] = useState<MovieInfo>({
-    title: "Default",
-    releaseDate: "Default",
-    director: "Default",
-    producers: [],
-    actors: [],
-    description: "Default",
-    posterUrl: null,
-  });
+const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose}) => {
+    const [movie, setMovie] = useState<MovieDetails>({
+        genres: [],
+        image_url: "",
+        minutes: 0,
+        release: "",
+        type: "",
+        id: "Default",
+        title: "Default",
+        year: 0
+    });
 
-  useEffect(() => {
-    const fetchMovieInfo = async (): Promise<void> => {
-      try {
-        const response = await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=e6f9c46d`); 
-        const movieData = response.data;
-        setMovieInfo({
-          title: movieData.Title,
-          releaseDate: movieData.Released,
-          director: movieData.Director,
-          producers: movieData.Production.split(", "),
-          actors: movieData.Actors.split(", "),
-          description: movieData.Plot,
-          posterUrl: movieData.Poster !== "N/A" ? movieData.Poster : null,
-        });
-      } catch (error) {
-        console.error("My error: " + error);
-      }
+    const fetchMovie = async () => {
+        try {
+            const data: MovieDetails = await getDetails(movie_key);
+            setMovie(data);
+        } catch (error) {
+            console.error(error);
+        }
     };
-    fetchMovieInfo().then(r => r);
-  }, [movieKeys]);
 
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={handleClose}
-      contentLabel={movieInfo.title}
-      ariaHideApp={false}
-      style={ModalStyles}
-    >
-      <h2>{movieInfo.title}</h2>
-      <div css={CardStyle}>
-        {movieInfo.posterUrl && (
-          <img
-            src={movieInfo.posterUrl}
-            alt={`Poster for ${movieInfo.title}`}
-            css={ImgStyle}
-          />
-        )}
-        <div>
-          <p>Released: {movieInfo.releaseDate}</p>
-          <p>Directed by: {movieInfo.director}</p>
-          <p>Produced by: {movieInfo.producers.join(", ")}</p>
-          <p>Starring: {movieInfo.actors.join(", ")}</p>
-          <p>{movieInfo.description}</p>
-        </div>
-      </div>
-      <button onClick={handleClose} css={ExitButtonStyle}>
-        <FontAwesomeIcon icon={faTimes} size="2x" color="#ff0000" />
-      </button>
-    </Modal>
-  );
+    fetchMovie();
+
+    return (
+        <Modal
+            isOpen={isOpen}
+            onRequestClose={handleClose}
+            contentLabel={movie.title}
+            ariaHideApp={false}
+            style={ModalStyles}
+        >
+            <h2>{movie.title}</h2>
+            <div css={CardStyle}>
+                <img
+                    src={movie.image_url}
+                    alt={`Poster for ${movie.title}`}
+                    css={ImgStyle}
+                />
+                <div>
+                    <p>Type: {movie.type}</p>
+                    {movie.summary && (
+                        <p>Summary: {movie.summary}</p>
+                    )}
+                    {movie.outline && (
+                        <p>Outline: {movie.outline}</p>
+                    )}
+                    {movie.rating && (
+                        <p>Rating: {movie.rating}</p>
+                    )}
+                    {movie.rating_count && (
+                        <p>Rating count: {movie.rating_count}</p>
+                    )}
+                    <p>Genres: {movie.genres.join(', ')}</p>
+                    <p>Released: {movie.release}</p>
+                    <p>Minutes: {movie.minutes}</p>
+                    {movie.episodes && (
+                        <p>Episodes: {movie.episodes}</p>
+                    )}
+                    {movie.series_start && (
+                        <p>Series start: {movie.series_start}</p>
+                    )}
+                    {movie.series_end && (
+                        <p>Series end: {movie.series_end}</p>
+                    )}
+                </div>
+            </div>
+            <button onClick={handleClose} css={ExitButtonStyle}>
+                <FontAwesomeIcon icon={faTimes} size="2x" color="#ff0000"/>
+            </button>
+        </Modal>
+    );
 };
 
 export default Movie;
