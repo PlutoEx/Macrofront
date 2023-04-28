@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {ApiOptions, Genres, MovieDetails, TopMoviesApiOption} from "./types";
+import {ApiOptions, Genres, MovieDataFull, TopMoviesApiOption} from "./types";
 import {getDetails} from "./getDetails";
 import {
     SelectGenreStyled, SelectTextStyled, TopMoviesWrapperStyled,
@@ -51,14 +51,14 @@ const TopMovies = () => {
         }
     }
 
-    const [movies, setMovies] = useState<MovieDetails[]>([top1, top2, top3, top4, top5, top6, top7, top8]);
+    const [movies, setMovies] = useState<MovieDataFull[]>([top1, top2, top3, top4, top5, top6, top7, top8]);
 
     const fetchMovies = async () => {
         try {
             const movies_keys: string[] = await handleGet();
-            const movies_tmp: MovieDetails[] = [];
+            const movies_tmp: MovieDataFull[] = [];
             for (const key of movies_keys) {
-                const data: MovieDetails = await getDetails(key);
+                const data: MovieDataFull = await getDetails(key);
                 movies_tmp.push(data);
             }
             setMovies(movies_tmp);
