@@ -1,7 +1,12 @@
 /** @jsx jsx */
 import {jsx} from "@emotion/react";
 import React, {useState} from "react";
-import {ContainerStyled, SearchStyle, TextStyle} from "./Moive.styles";
+import {
+    ContainerStyled, FormStyled,
+    LeftSideStyled,
+    RightSideStyled,
+    TextGenresStyled, TextSearchStyled,
+} from "./Moive.styles";
 import Input from "../Input";
 import Movies from "./Movies";
 import {genresOptions} from "./constant";
@@ -67,27 +72,27 @@ const MovieSearch: React.FC = () => {
 
     return (
         <ContainerStyled>
-            <form onSubmit={handleSearch} id="search-form">
-                <div css={SearchStyle}>
-                    <div>
-                        <div css={TextStyle}>Search</div>
-                        <Input
-                            type="text"
-                            placeholder={"Enter title or keyword"}
-                            onChange={handleInputChange}
-                        />
-                    </div>
+            <LeftSideStyled>
+                <FormStyled onSubmit={handleSearch} id="search-form">
+                    <TextSearchStyled>Search</TextSearchStyled>
+                    <Input
+                        type="text"
+                        placeholder={"Enter title or keyword"}
+                        onChange={handleInputChange}
+                    />
+                </FormStyled>
+                <div>
+                    <TextGenresStyled>Genres</TextGenresStyled>
+                    <SelectSomeMenu
+                        options={genresOptions}
+                        active={genres}
+                        onChange={handleGenresChange}
+                    />
                 </div>
-            </form>
-            <div>
-                <div css={TextStyle}>Genres</div>
-                <SelectSomeMenu
-                    options={genresOptions}
-                    active={genres}
-                    onChange={handleGenresChange}
-                />
-            </div>
-            <Movies movies={movies}/>
+            </LeftSideStyled>
+            <RightSideStyled>
+                <Movies movies={movies}/>
+            </RightSideStyled>
         </ContainerStyled>
     );
 };

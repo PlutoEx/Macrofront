@@ -10,11 +10,32 @@ export const ContainerStyled = styled.div`
   color: white;
 `;
 
-export const TextStyle = css`
+export const LeftSideStyled = styled.div`
+  flex: 1;
+  margin-right: 20px;
+  width: 30%;
+`;
+export const RightSideStyled = styled.div`
+  flex: 1;
+`;
+
+export const TextSearchStyled = styled.div`
+  margin-bottom: 20px;
   font-family: "Russo One", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
+  font-size: 1.4vw;
+`;
+
+export const FormStyled = styled.form`
+  all: unset;
+  width: 100%;
+  background-color: red;
+`;
+
+export const TextGenresStyled = styled.div`
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-family: "Russo One", sans-serif;
+  font-size: 1.4vw;
 `;
 
 export const TopMoviesWrapperStyled = styled.div`
@@ -103,9 +124,4 @@ export const ExitButtonStyled = styled.button`
   position: absolute;
   top: 0;
   right: 5px;
-`;
-
-export const SearchStyle = css`
-  display: flex;
-  align-items: center;
 `;

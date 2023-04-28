@@ -60,11 +60,23 @@ export const IconStyled = styled.span<IconStyledProps>`
           `}
 `;
 
+export const SelectSomeWrapperStyled = styled.div`
+  padding: 5px;
+  background: linear-gradient(0deg, rgba(208, 188, 255, 0.05), rgba(208, 188, 255, 0.05)), #000000;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Roboto", sans-serif;
+  font-size: 1vw;
+`;
 
 export const SelectButtonStyled = styled.button<SelectOptionStyledProps>`
   all: unset;
+  margin: 2px;
   padding: 4px;
-  border: 1px solid black;
+  border: 1px solid #7f7f7f;
   border-radius: 8px;
 
   ${({isSelected}) => isSelected && css`background-color: green;`}

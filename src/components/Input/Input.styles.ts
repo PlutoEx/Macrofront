@@ -9,13 +9,10 @@ export const InputWrapperStyled = styled.div`
   font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 400;
+  width: 100%;
   height: 30px;
   line-height: 30px;
-  width: 400px;
-  max-width: 400px;
-  margin-right: 10px;
   margin-top: 10px;
-  padding-left: 35px;
 `;
 
 export const SearchIconStyle: SerializedStyles = css`
@@ -27,5 +24,6 @@ export const SearchIconStyle: SerializedStyles = css`
 
 export const InputStyled = styled.input`
   all: unset;
-  width: 100%;
+  padding-left: 40px;
+  width: calc(100% - 40px);
 `;
