@@ -1,44 +1,49 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
-import React, { useState } from 'react';
-import { MoviesGridStyled, UnsetButtonStyled } from "./Moive.styles";
+import {jsx} from "@emotion/react";
+import React, {useState} from 'react';
+import {MoviesGridStyled, UnsetButtonStyled} from "./Moive.styles";
 import Movie from "./Movie";
-import { MovieDataShort, MoviesProps }  from "./types";
+import {MovieDataFull, MovieDataShort, MoviesProps} from "./types";
 import Card from "../Card";
 
-const Movies: React.FC<MoviesProps> = ({ movies }) => {
-  const [selectedMovie, setSelectedMovie] = useState<string | null>(null);
-  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+const Movies: React.FC<MoviesProps> = ({movies, moviesFull}) => {
+    const [selectedMovie, setSelectedMovie] = useState<string | null>(null);
+    const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+    const [movieFull, setMovieFull] = useState<MovieDataFull | undefined>(undefined);
 
-  const handleMovieClick = (movieKey: string) => {
-    setSelectedMovie(movieKey);
-    setIsOpen(true);
-  };
+    const handleMovieClick = (movieKey: string) => {
+        setSelectedMovie(movieKey);
+        if (moviesFull)
+            setMovieFull(moviesFull[moviesFull.findIndex(movie => movie.id === selectedMovie)])
+        setIsOpen(true);
+    };
 
-  const handleClose = () : void => {
-    setSelectedMovie(null);
-    setIsOpen(false);
-  };
+    const handleClose = (): void => {
+        setSelectedMovie(null);
+        setMovieFull(undefined);
+        setIsOpen(false);
+    };
 
-  return (
-    <MoviesGridStyled>
-      {movies.map((movie: MovieDataShort, index: number) => (
-        <UnsetButtonStyled onClick={() => handleMovieClick(movie.id)} key={index}>
-          <Card
-            img={movie.image_url}
-            alt={`Poster for ${movie.title}`}
-            title={movie.title}
-            pub_year={movie.year}
-          />
-        </UnsetButtonStyled>
-      ))}
-      {selectedMovie && <Movie
-        movie_key={selectedMovie}
-        isOpen={modalIsOpen}
-        handleClose={handleClose}
-      />}
-    </MoviesGridStyled>
-  );
+    return (
+        <MoviesGridStyled>
+            {movies.map((movie: MovieDataShort, index: number) => (
+                <UnsetButtonStyled onClick={() => handleMovieClick(movie.id)} key={index}>
+                    <Card
+                        img={movie.image_url}
+                        alt={`Poster for ${movie.title}`}
+                        title={movie.title}
+                        pub_year={movie.year}
+                    />
+                </UnsetButtonStyled>
+            ))}
+            {selectedMovie && moviesFull?.find(movie => movie.id === selectedMovie) && <Movie
+                movie_key={selectedMovie}
+                isOpen={modalIsOpen}
+                handleClose={handleClose}
+                movieFull={movieFull}
+            />}
+        </MoviesGridStyled>
+    );
 };
 
 export default Movies;

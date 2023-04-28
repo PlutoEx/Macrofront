@@ -55,12 +55,14 @@ export type MovieDataShort = {
 
 export type MoviesProps = {
     movies: MovieDataShort[];
+    moviesFull?: MovieDataFull[];
 }
 
 export type MovieProps = {
     movie_key: string;
     isOpen: boolean;
     handleClose: () => void;
+    movieFull?: MovieDataFull;
 }
 
 export type Genres = 'all'

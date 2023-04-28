@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Modal from "react-modal";
-import {CardStyle, ExitButtonStyle, ImgStyle, ModalStyles} from "./Moive.styles";
+import {CardStyle, ExitButtonStyled, ImgStyled, ModalStyles, ModalTitle, TextContainer} from "./Moive.styles";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {MovieDetails, MovieProps} from "./types";
 import {getDetails} from "./getDetails";
 
 
-const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose}) => {
+const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose, movieFull}) => {
     const [movie, setMovie] = useState<MovieDetails>({
         genres: [],
         image_url: "",
@@ -19,16 +19,24 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose}) => {
         year: 0
     });
 
-    const fetchMovie = async () => {
-        try {
-            const data: MovieDetails = await getDetails(movie_key);
-            setMovie(data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    console.log(movieFull)
 
-    fetchMovie();
+    useEffect(() => {
+        const fetchMovie = async () => {
+            try {
+                const data: MovieDetails = await getDetails(movie_key);
+                setMovie(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        if (movieFull) {
+            setMovie(movieFull);
+        } else {
+            fetchMovie();
+        }
+    }, [movie_key, movieFull]);
 
     return (
         <Modal
@@ -38,14 +46,13 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose}) => {
             ariaHideApp={false}
             style={ModalStyles}
         >
-            <h2>{movie.title}</h2>
+            <ModalTitle>{movie.title}</ModalTitle>
             <div css={CardStyle}>
-                <img
+                <ImgStyled
                     src={movie.image_url}
                     alt={`Poster for ${movie.title}`}
-                    css={ImgStyle}
                 />
-                <div>
+                <TextContainer>
                     <p>Type: {movie.type}</p>
                     {movie.summary && (
                         <p>Summary: {movie.summary}</p>
@@ -71,11 +78,11 @@ const Movie: React.FC<MovieProps> = ({movie_key, isOpen, handleClose}) => {
                     {movie.series_end && (
                         <p>Series end: {movie.series_end}</p>
                     )}
-                </div>
+                </TextContainer>
             </div>
-            <button onClick={handleClose} css={ExitButtonStyle}>
+            <ExitButtonStyled onClick={handleClose}>
                 <FontAwesomeIcon icon={faTimes} size="2x" color="#ff0000"/>
-            </button>
+            </ExitButtonStyled>
         </Modal>
     );
 };

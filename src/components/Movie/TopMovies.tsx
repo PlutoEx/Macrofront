@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import {ApiOptions, Genres, MovieDetails, TopMoviesApiOption} from "./types";
 import {getDetails} from "./getDetails";
-import Card from "../Card";
 import {
-    SelectGenreStyled, SelectTextStyled,
-    TopMoviesGridStyled,
-    TopMoviesWrapperStyled,
-    UnsetButtonStyled
+    SelectGenreStyled, SelectTextStyled, TopMoviesWrapperStyled,
 } from "./Moive.styles";
 import SelectMenu from "../SelectMenu/selectMenu";
 import {Option} from "../SelectMenu/types";
 import {genresOptions, top1, top2, top3, top4, top5, top6, top7, top8} from './constant';
+import Movies from "./Movies";
 
 const MaxMovieCount = 8;
 const axios = require('axios');
@@ -70,8 +67,8 @@ const TopMovies = () => {
         }
     };
 
-    const handleGenreChange = (event: Option): void => {
-        const selectedGenre: Genres = event.value;
+    const handleGenreChange = (option: Option): void => {
+        const selectedGenre: Genres = option.value as Genres;
         setGenre(selectedGenre);
         options_genre.params.genre = selectedGenre;
         fetchMovies();
@@ -88,19 +85,10 @@ const TopMovies = () => {
                     onChange={handleGenreChange}
                 />
             </SelectGenreStyled>
-            <TopMoviesGridStyled>
-                {movies.map((movie: MovieDetails, index: number) => (
-                    <UnsetButtonStyled key={index}>
-                        <Card
-                            img={movie.image_url}
-                            alt={movie.title + ' Img'}
-                            title={movie.title}
-                            authors={["Rating: " + (movie.rating ? movie.rating : '')]}
-                            pub_year={movie.year}
-                        />
-                    </UnsetButtonStyled>
-                ))}
-            </TopMoviesGridStyled>
+            <Movies
+                movies={movies}
+                moviesFull={movies}
+            />
         </TopMoviesWrapperStyled>
     );
 };
