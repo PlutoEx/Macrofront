@@ -11,6 +11,7 @@ export const SelectStyled = styled.div`
   height: 30px;
   min-height: 30px;
   cursor: pointer;
+  margin-top: 10px;
 `;
 
 export const SelectSelectedStyled = styled.div`
@@ -42,7 +43,7 @@ export const SelectMenuStyled = styled.div`
 export const SelectOptionStyled = styled.div<SelectOptionStyledProps>`
   border-radius: 8px;
   padding: 10px;
-  
+
   &:hover {
     background-color: lightgray;
   }
@@ -76,7 +77,7 @@ export const SelectSomeWrapperStyled = styled.div`
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1vw;
 `;
 
@@ -87,5 +88,9 @@ export const SelectButtonStyled = styled.button<SelectOptionStyledProps>`
   border: 1px solid #7f7f7f;
   border-radius: 8px;
 
-  ${({isSelected}) => isSelected && css`background-color: green;`}
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      background-color: green;
+    `}
 `;
