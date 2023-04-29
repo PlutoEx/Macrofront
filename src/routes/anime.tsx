@@ -17,7 +17,6 @@ const AnimePage = () => {
     <>
       <HeadMeta title="MacroFrontEnd anime" description="Anime page of Macrofrontend Team" />
       <Navbar />
-      {/* ДОПИСАТЬ СЮДА АЙДИ БЛОКА К КОТОРОМУ СКРОЛЛИТЬ ПО КНОПКЕ element_id_to_scroll можно посмотреть как сделано уже в books*/}
       <UniversalHeader
         height={1080}
         background_img={image1}
@@ -28,7 +27,7 @@ const AnimePage = () => {
         link_to_page="anime"
         button_text="Explore"
         button_type="scroll"
-        element_id_to_scroll=""
+        element_id_to_scroll="search-form"
       />
       <Banner />
       <SearchBlock />

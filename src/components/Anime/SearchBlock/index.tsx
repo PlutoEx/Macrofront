@@ -54,7 +54,7 @@ const SearchBlock: React.FC = () => {
   return (
     <div css={wrapStyle}>
       <div css={contentStyle}>
-        <form onSubmit={handleSearch} css={formStyle}>
+        <form onSubmit={handleSearch} css={formStyle} id="search-form">
           <div>
             <span css={textStyle}>Search</span>
             <Input type="text" onChange={(e: string) => handleChange(e, 'query')} />
