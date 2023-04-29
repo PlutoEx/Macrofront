@@ -9,12 +9,14 @@ import {
   Categories,
   TextWithImage,
   imageCSS,
+  aStyle
 } from './Footer.styles';
 
 import { mainData, copyright, categories, developedBy } from './constants/text';
 
 import Image from '../Image';
 import logo from './../../public/logo.png';
+let base_page = "http://localhost:8099/advfront/";
 
 const Footer: React.FC = () => {
   return (
@@ -26,7 +28,7 @@ const Footer: React.FC = () => {
               <DataColumn key={i}>
                 <span>{dataCol.title}</span>
                 {dataCol.items.map((item, j) => {
-                  return <Item key={`${i}_${j}`}>{item}</Item>;
+                  return <Item key={`${i}_${j}`}><a css={aStyle} href={item[1]}>{item[0]}</a></Item>;
                 })}
               </DataColumn>
             );
@@ -36,7 +38,7 @@ const Footer: React.FC = () => {
           <span>&copy;{copyright}</span>
           <Categories>
             {categories.map((category, i) => {
-              return <span key={i}>{category}</span>;
+              return <a css={aStyle} href={base_page + category[1]}><span key={i}>{category[0]}</span></a>;
             })}
           </Categories>
           <TextWithImage>
