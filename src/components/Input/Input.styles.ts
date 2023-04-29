@@ -1,18 +1,36 @@
-import {css, SerializedStyles} from "@emotion/react";
-import styled from "@emotion/styled";
+import { css, SerializedStyles } from '@emotion/react';
+import styled from '@emotion/styled';
+import { InputProps } from './types';
 
-export const InputWrapperStyled = styled.div`
+export const InputWrapperStyled = styled.div<Pick<InputProps, 'inputbarType'>>`
   position: relative;
-  border-radius: 8px;
   background: white;
-  color: black;
   font-family: Roboto, sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  width: 100%;
-  height: 30px;
-  line-height: 30px;
-  margin-top: 10px;
+  color: black;
+  font-size: 16px;
+  padding-left: 35px;
+  display: flex;
+  justify-content: center;
+
+  ${(props) =>
+    props.inputbarType === 'Primary'
+      ? `
+      border-radius: 8px;
+      height: 30px;
+    
+      width: 400px;
+      max-width: 400px;
+    
+      margin-right: 10px;
+      margin-top: 10px;
+
+    `
+      : `
+      border-radius: 28px;
+
+      width: 350px;
+      height: 32px;
+    `}
 `;
 
 export const SearchIconStyle: SerializedStyles = css`
@@ -20,6 +38,8 @@ export const SearchIconStyle: SerializedStyles = css`
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
+
+  color: #49454f;
 `;
 
 export const InputStyled = styled.input`

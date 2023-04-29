@@ -1,8 +1,8 @@
 import {Genres} from "../Movie/types";
 
 export interface SelectMenuProps {
-    options: Option[];
-    onChange: (value: Option) => void;
+  options: Option[];
+  onChange: Function;
 }
 
 export interface SelectSomeMenuProps {
@@ -18,7 +18,7 @@ export interface Option {
 }
 
 export interface IconStyledProps {
-    isOpen: boolean;
+  isOpen: boolean;
 }
 
 export interface SelectOptionStyledProps {

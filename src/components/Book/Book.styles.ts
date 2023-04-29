@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import {css} from "@emotion/react";
-import "@fontsource/russo-one";
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import '@fontsource/russo-one';
 
 export const ContainerStyled = styled.div`
   padding-left: 15%;
@@ -18,16 +18,15 @@ export const HeaderContainerStyled = styled.div`
   color: white;
 `;
 
-
 export const TextStyle = css`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
 `;
 
 export const TextStyleS = css`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -46,29 +45,29 @@ export const BooksGridStyled = styled.div`
 `;
 
 export const ModalStyles = {
-    overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
-        zIndex: 9999,
-    },
-    content: {
-        backgroundColor: '#333',
-        border: 'none',
-        borderRadius: '10px',
-        padding: '20px',
-        color: 'white',
-        width: '50%',
-        height: '75%',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
-        zIndex: 10000,
-
-    }
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    zIndex: 9999,
+  },
+  content: {
+    backgroundColor: '#333',
+    border: 'none',
+    borderRadius: '10px',
+    padding: '20px',
+    color: 'white',
+    width: '50%',
+    height: '75%',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
+    zIndex: 10000,
+  },
 };
 
 export const unsetButton = css`
   all: unset;
+  cursor: pointer;
 `;
 
 export const CardStyle = css`
@@ -76,7 +75,7 @@ export const CardStyle = css`
   align-items: center;
   margin: 20px 0;
   font-size: 15px;
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
 `;
 
 export const ImgStyle = css`
@@ -109,24 +108,24 @@ export const ColumnStyle2 = css`
 `;
 
 export const HeaderTextStyle1 = css`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 5vw;
 `;
 
 export const HeaderTextStyle2 = css`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 1vw;
 `;
 
 export const HeaderTextStyle3 = css`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 1vw;
   color: black;
   margin-bottom: 5px;
 `;
 
 export const HeaderTextStyle4 = css`
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 0.8vw;
   color: #555555;
   margin-bottom: 5px;
@@ -134,9 +133,9 @@ export const HeaderTextStyle4 = css`
 
 export const HeaderTextStyle5 = css`
   all: unset;
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 0.8vw;
-  color: #00CEDB;
+  color: #00cedb;
 `;
 
 export const HeaderImgStyle = css`
@@ -171,5 +170,5 @@ export const HeaderImgWrapperStyle = css`
 `;
 
 export const BookLinkStyle = css`
-  color: #00CEDB;
+  color: #00cedb;
 `;

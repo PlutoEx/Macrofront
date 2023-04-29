@@ -2,6 +2,20 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import '@fontsource/russo-one';
 
+
+
+const linkHover = css({
+  color: 'white',
+  cursor: 'pointer'
+});
+
+export const aStyle = css({
+  color: 'inherit',
+  textDecoration: 'none',
+  '&:hover': linkHover,
+});
+
+
 export const Container = styled.footer`
   background-color: #000000;
 
