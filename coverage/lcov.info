@@ -1,5 +1,5 @@
 TN:
-SF:src/components/helpers/capitalizeFirstLetter.ts
+SF:helpers/capitalizeFirstLetter.ts
 FN:1,capitalizeFirstLetter
 FNF:1
 FNH:1

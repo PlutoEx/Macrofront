@@ -5,7 +5,7 @@ import Link from '../Link';
 import Image from '../Image';
 import Input from '../Input';
 
-import capitalizeFirstLetter from '../helpers/capitalizeFirstLetter';
+import capitalizeFirstLetter from '../../../helpers/capitalizeFirstLetter';
 import logo from './../../public/logo.png';
 
 const Navbar: React.FC = () => {
