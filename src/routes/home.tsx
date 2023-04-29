@@ -19,16 +19,27 @@ let title1 = "The world's most valuable children's books";
 let description1 = "Children's books can be valuable if they are the right edition in the right condition. Discover 10 books that command high prices.";
 import image_1 from './../public/books_1.png';
 
+
 const HomePage = () => {
-  return (
-    <>
-      <Navbar />
-      <UniversalHeader height={600} background_img={image1} block1_width={445} title_text={title_text1} description_text={description_text1} button_variant="primary" link_to_page="anime" button_text="Explore" button_type="button" element_id_to_scroll="" />
-      <UniversalHeader height={600} background_img={image2} block1_width={445} title_text={title_text2} description_text={description_text2} button_variant="primary" link_to_page="films" button_text="Explore" button_type="button" element_id_to_scroll="" />
-      <UniversalHeader height={600} block1_width={286} title_text={title_text3} description_text={description_text3} button_variant="primary" link_to_page="books" button_text="Explore" button_type="button" element_id_to_scroll="" children={[<BooksCollection title_text={title1} description_text={description1} description_side="left" img_src={image_1} img_alt="Image 1" />]} />
-      <Footer />
-    </>
-  );
+    document.title = 'Home';
+    return (
+        <>
+            <Navbar/>
+            <UniversalHeader height={600} background_img={image1} block1_width={445} title_text={title_text1}
+                             description_text={description_text1} button_variant="primary" link_to_page="anime"
+                             button_text="Explore" button_type="button" element_id_to_scroll=""/>
+            <UniversalHeader height={600} background_img={image2} block1_width={445} title_text={title_text2}
+                             description_text={description_text2} button_variant="primary" link_to_page="films"
+                             button_text="Explore" button_type="button" element_id_to_scroll=""/>
+            <UniversalHeader height={600} block1_width={286} title_text={title_text3}
+                             description_text={description_text3} button_variant="primary" link_to_page="books"
+                             button_text="Explore" button_type="button" element_id_to_scroll=""
+                             children={[<BooksCollection title_text={title1} description_text={description1}
+                                                         description_side="left" img_src={image_1}
+                                                         img_alt="Image 1"/>]}/>
+            <Footer/>
+        </>
+    );
 };
 
 export default HomePage;
