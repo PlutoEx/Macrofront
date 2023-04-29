@@ -3,7 +3,6 @@ import { BooksGridStyled, unsetButton } from './Book.styles';
 import Book from './Book';
 import { BookData, BooksProps } from './types';
 import Card from '../Card';
-import Button from '../Button';
 
 const Books: React.FC<BooksProps> = ({ books }) => {
   const [selectedBook, setSelectedBook] = useState<string[] | null>(null);
@@ -25,7 +24,7 @@ const Books: React.FC<BooksProps> = ({ books }) => {
   return (
     <BooksGridStyled>
       {books.map((book: BookData) => (
-        <Button
+        <button
           css={unsetButton}
           onClick={() => handleBookClick([book.key, book.isbn[0]], book.cover_i)}
         >
@@ -36,7 +35,7 @@ const Books: React.FC<BooksProps> = ({ books }) => {
             authors={book.author_name}
             pub_year={book.first_publish_year}
           />
-        </Button>
+        </button>
       ))}
       {selectedBook && bookCoverId && (
         <Book
