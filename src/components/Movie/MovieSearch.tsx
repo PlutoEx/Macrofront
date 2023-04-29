@@ -44,6 +44,7 @@ const MovieSearch: React.FC = () => {
             console.log('Search titleS API:');
             console.log(response.data);
             const movieResults: MovieDataShort[] = response.data.results.map((movie: any) => ({
+                key: movie.id,
                 id: movie.id.substring(7, movie.id.length - 1),
                 title: movie.title,
                 type: movie.titleType,

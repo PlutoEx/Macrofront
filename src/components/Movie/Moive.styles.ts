@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import {css} from "@emotion/react";
 import "@fontsource/russo-one";
-import image1 from '../../../public/movies/image_1.png'
 
 export const ContainerStyled = styled.div`
   padding-left: 15%;
@@ -127,26 +126,6 @@ export const ExitButtonStyled = styled.button`
   position: absolute;
   top: 0;
   right: 5px;
-`;
-
-export const HeaderPictureStyled = styled.div`
-  background-image: url(${image1});
-  background-size: 100vw 40vw;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 40vw;
-`;
-
-export const HeaderTextContainerStyled = styled.div`
-  //color: white;
-  //font-family: "Russo One", sans-serif;
-  //padding-left: 60%;
-  //padding-top: 20%;
-`;
-
-export const HeaderTitleStyled = styled.div`
-  font-size: 1.5vw;
-  margin-bottom: 10px;
 `;
 
 export const ScrollButtonStyled = styled.button`
