@@ -1,5 +1,5 @@
 {
-    "name": "advfront",
+    "name": "MacroFrontend",
     "version": "1.0.0",
     "description": "## To install project ``` npm init -y npm i @ijl/cli -D npx ijl-cli init ``` ## To run",
     "main": "./src/index.tsx",

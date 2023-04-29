@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
         </div>
         <div css={linksWrap}>
           {pages.map((page) => (
-            <Link to={`/advfront/${page}`} key={page}>
+            <Link to={`/MacroFrontend/${page}`} key={page}>
               {capitalizeFirstLetter(page)}
             </Link>
           ))}

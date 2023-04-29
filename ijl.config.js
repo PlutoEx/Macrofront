@@ -8,10 +8,10 @@ module.exports = {
     },
   },
   navigations: {
-    'advfront.main': '/advfront',
+    'MacroFrontend.main': '/MacroFrontend',
   },
   features: {
-    advfront: {
+    MacroFrontend: {
       // add your features here in the format [featureName]: { value: string }
     },
   },

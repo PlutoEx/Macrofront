@@ -46,7 +46,7 @@ const UniversalHeader: React.FC<HeaderProps> = ({
             <Button
               children={button_text}
               variant={button_variant}
-              page={'http://localhost:8099/advfront/' + link_to_page}
+              page={'/MacroFrontend/' + link_to_page}
               buttonType={button_type}
               elementIdToScroll={element_id_to_scroll}
             />
