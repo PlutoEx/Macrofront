@@ -1,11 +1,20 @@
+import {Genres} from "../Movie/types";
+
 export interface SelectMenuProps {
   options: Option[];
   onChange: Function;
 }
 
+export interface SelectSomeMenuProps {
+    options: Option[];
+    active: string[];
+    onChange: (active: string[]) => void;
+}
+
+
 export interface Option {
-  value: string;
-  label: string;
+    value: Genres | string;
+    label: string;
 }
 
 export interface IconStyledProps {
@@ -13,5 +22,5 @@ export interface IconStyledProps {
 }
 
 export interface SelectOptionStyledProps {
-  isSelected: boolean;
+    isSelected: boolean;
 }

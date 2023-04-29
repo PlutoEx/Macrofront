@@ -44,5 +44,6 @@ export const SearchIconStyle: SerializedStyles = css`
 
 export const InputStyled = styled.input`
   all: unset;
-  width: 100%;
+  padding-left: 40px;
+  width: calc(100% - 40px);
 `;

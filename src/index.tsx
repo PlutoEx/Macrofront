@@ -1,3 +1,4 @@
+import { JSX } from '@emotion/react/jsx-runtime';
 import React from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -12,7 +13,8 @@ export default () => (
 
 const container = document.getElementById('app');
 
-export const mount = (Component) => {
+export const mount = (Component: JSX.IntrinsicAttributes) => {
+  // @ts-ignore
   ReactDom.render(<Component />, container);
 };
 
