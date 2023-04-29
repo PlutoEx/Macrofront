@@ -16,7 +16,9 @@ const Navbar: React.FC = () => {
     <Container>
       <div css={NavbarStyled}>
         <div css={textWithImg}>
-          <Image src={logo} alt="MacroFrontEnd logo" width={65} height={54} css={img} />
+          <Link to="/Macrofrontend">
+            <Image src={logo} alt="MacroFrontEnd logo" width={65} height={54} css={img} />
+          </Link>
           <span>{team}</span>
         </div>
         <div css={linksWrap}>
