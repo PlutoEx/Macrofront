@@ -10,7 +10,7 @@ const options: MovieDetailsApiOption = {
     },
     headers: {
         'content-type': 'application/octet-stream',
-        'X-RapidAPI-Key': '720535f9edmshf844121d0df7abdp1a3953jsn11d730052c80',
+        'X-RapidAPI-Key': '6790fd4e5fmshda4defe8241f205p1c78d8jsn6dd8a422c590',
         'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     }
 };
