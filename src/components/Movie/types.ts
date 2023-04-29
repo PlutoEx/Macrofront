@@ -28,7 +28,7 @@ export type MovieDataFull = MovieDetails & MovieCredits
 export type MovieCredits = {
     cast: string[];
     director: string[];
-    producer: string[];
+    producer?: string[];
     writer?: string[];
 }
 
