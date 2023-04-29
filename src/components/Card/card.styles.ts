@@ -21,18 +21,19 @@ export const CardImgStyled = styled.img`
 export const CardTitleStyle = styled.div`
   font-family: 'Russo One', sans-serif;
   font-weight: 400;
-  font-size: 0.8vw;
+  font-size: 14px;
   margin-bottom: 2px;
 `;
 
 export const CardSubtitleStyle = styled.div`
   font-family: 'Russo One', sans-serif;
-  font-size: 0.7vw;
+  font-size: 12px;
   color: #bdbdbd;
   margin-top: 0;
   margin-bottom: 2px;
 `;
 
 export const CardContentStyle = styled.div`
+  color: #fff;
   margin-top: 4px;
 `;

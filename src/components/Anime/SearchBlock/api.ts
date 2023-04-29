@@ -1,46 +1,46 @@
-const accessToken = 'hxR8HRkCyARVhaTAunAUZY9gCedkt9HybXVbyclC';
+import { AnimeApiProps, QueryProps } from './types';
 
-export async function getAnimeList() {
-  const url = 'https://anilist.co/graphiql/';
-  const query = `
-  query ($page: Int, $perPage: Int, $search: String) {
-    Page(page: $page, perPage: $perPage) {
-      pageInfo {
-        total
-        perPage
-      }
-      media(search: $search, type: ANIME, sort: FAVOURITES_DESC) {
-        id
-        title {
-          romaji
-          english
-          native
-        }
-        type
-        genres
-      }
-    }
-  }
-`;
+const getParam = (prop: QueryProps) => {
+  return prop.val !== '' ? `${prop.param}=${prop.val}` : '';
+};
 
-  const variables = {
-    search: query,
-    page: 1,
-    perPage: 3,
-  };
+export async function getAnimeList({ query, type, rating, status, order_by }: AnimeApiProps) {
+  const url = 'https://api.jikan.moe/v4/anime';
+  const limit = '20';
 
-  const headers = {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    Authorization: 'Bearer ' + accessToken,
-  };
+  const props = [
+    {
+      param: 'q',
+      val: query,
+    },
+    {
+      param: 'type',
+      val: type,
+    },
+    {
+      param: 'rating',
+      val: rating,
+    },
+    {
+      param: 'status',
+      val: status,
+    },
+    {
+      param: 'order_by',
+      val: order_by,
+    },
+    {
+      param: 'limit',
+      val: limit,
+    },
+  ];
+  const queryParamsArr: string[] = [];
+  props.forEach((prop) => getParam(prop) !== '' && queryParamsArr.push(getParam(prop)));
+  const queryParams = queryParamsArr.join('&');
 
-  const result = await fetch(url, {
-    method: 'POST',
-    headers,
-    body: query,
-  })
-    .then((res) => res.json)
-    .then((data) => console.log('Data:', data))
-    .catch((err) => console.log('fuuuuuuuuck', err.message));
+  const res = fetch(`${url}?${queryParams}`)
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
+
+  return res;
 }
