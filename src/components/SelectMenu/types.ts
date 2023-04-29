@@ -1,17 +1,17 @@
 export interface SelectMenuProps {
-    options: Option[];
-    onChange: (value: Option) => void;
+  options: Option[];
+  onChange: Function;
 }
 
 export interface Option {
-    value: string;
-    label: string;
+  value: string;
+  label: string;
 }
 
 export interface IconStyledProps {
-    isOpen: boolean;
+  isOpen: boolean;
 }
 
 export interface SelectOptionStyledProps {
-    isSelected: boolean;
+  isSelected: boolean;
 }

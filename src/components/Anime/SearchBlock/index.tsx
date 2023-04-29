@@ -1,22 +1,68 @@
-import { wrap, BannerStyled, titleStyle, titleWrap, imageStyle } from './SearchBlock.styles';
-import image from './../../../public/anime_2.png';
-import Image from '../../Image';
+import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 
 import { getAnimeList } from './api';
+import { selectBars } from './texts';
+
+import {
+  wrapStyle,
+  contentStyle,
+  textStyle,
+  formStyle,
+  selectBarStyle,
+} from './SearchBlock.styles';
+import Input from '../../Input';
+import SelectMenu from '../../SelectMenu/selectMenu';
+import { Option } from '../../SelectMenu/types';
+import AnimeCards from '../AnimeCards';
 
 const SearchBlock: React.FC = () => {
-  const title = 'I hate jiga dryga';
+  const [searchProps, setSearchProps] = useState({
+    query: 'trending now',
+    type: '',
+    rating: '',
+    status: '',
+    order_by: '',
+  });
 
-  getAnimeList();
+  const [apiResponse, setApiResponse] = useState(null);
+
+  const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const res = await getAnimeList(searchProps);
+    setApiResponse(res);
+  };
+
+  console.log(apiResponse);
+
+  const handleChange = (value: string, field: string) => {
+    setSearchProps({ ...searchProps, [field]: value });
+  };
+
+  const renderSelectBars = selectBars.map((selectBar) => {
+    return (
+      <div css={selectBarStyle} key={selectBar.type}>
+        <span css={textStyle}>{selectBar.value}</span>
+        <SelectMenu
+          options={selectBar.options}
+          onChange={(e: Option) => handleChange(e.value, selectBar.type)}
+        />
+      </div>
+    );
+  });
 
   return (
-    <div css={wrap}>
-      <BannerStyled>
-        <Image src={image} alt="Anime Page Banner" width={1000} height={800} css={imageStyle} />
-        <div css={titleWrap}>
-          <span css={titleStyle}>{title}</span>
-        </div>
-      </BannerStyled>
+    <div css={wrapStyle}>
+      <div css={contentStyle}>
+        <form onSubmit={handleSearch} css={formStyle}>
+          <div>
+            <span css={textStyle}>Search</span>
+            <Input type="text" onChange={(e: string) => handleChange(e, 'query')} />
+          </div>
+          {renderSelectBars}
+        </form>
+        {apiResponse && <AnimeCards data={apiResponse.data} />}
+      </div>
     </div>
   );
 };
