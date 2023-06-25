@@ -1,5 +1,7 @@
 # Macrofront
 
+https://b2.inno-js.ru/MacroFrontend/
+
 ## To install dependencies
 
 ```
